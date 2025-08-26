@@ -1,0 +1,34 @@
+{{- /* exclude some user defined entries listed in the configuration */ -}}
+{{- with .Site.Params.robotsTxt.exclude -}}
+User-agent: *
+{{- range .}}
+Disallow: {{ . }}
+{{- end }}
+{{ end -}}
+
+
+
+{{- /* exclude some user defined crawlers listed in the configuration */ -}}
+{{- with .Site.Params.robotsTxt.excludeCrawlers -}}
+{{- range . }}
+User-agent: {{ . }}
+Disallow: /
+{{ end }}
+{{ end -}}
+
+
+
+{{- /* exclude all bots and crawlers in non-production environments */ -}}
+{{- if and (.Site.Params.robotsTxt.excludeNonProduction | default true) (not (or (hugo.IsProduction) (eq .Site.Params.env "production"))) -}}
+# ATTENTION: non-production environment, exclude all crawlers
+User-agent: *
+Disallow: /
+
+{{ end -}}
+
+
+{{- /* only output Sitemap if Hugo has a sitemap filename configured */ -}}
+{{- $sitemapFilename := site.Home.Sitemap.Filename -}}
+{{- if and $sitemapFilename (ne $sitemapFilename "") -}}
+Sitemap: {{ $sitemapFilename | absURL }}
+{{- end -}}

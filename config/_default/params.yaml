@@ -1,0 +1,46 @@
+# Hugo site parameters: robots.txt configuration
+#
+# When splitting a section into its own configuration file, the file itself
+# represents the top-level configuration object. Therefore no "params:" here.
+#
+# Resources / further reading:
+# - Hugo configuration reference (built-in variables and defaults):
+#   https://gohugo.io/getting-started/configuration/#all-configuration-settings
+
+---
+
+robotsTxt:
+  # Block all user agents ("Disallow: /") in non-production environments.
+  # Default: true
+  excludeNonProduction: false
+
+  # Global disallow rules for all crawlers ("User-agent: *").
+  #
+  # Resources / further reading:
+  # - Syntax reference:
+  #   https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt#url-matching-based-on-path-values
+  #
+  # Notes:
+  # - Reminder: "Disallow: /foo" blocks everything starting with "foo", e.g.
+  #   "foobar.html" or "foofolder/".
+  # - For individual pages, consider also setting `sitemapExclude: true` in a
+  #   page's front matter.
+  exclude:
+    # Version control
+    - "/.git/"
+    # Log and temp files
+    - "/*.log$"
+    - "/*.tmp$"
+    - "/*.bak$"
+    # System and metadata dirs
+    - "/.well-known/"
+
+  # List of specific crawlers/user agents to block completely ("Disallow: /").
+  #
+  # Resources / further reading:
+  # - https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers
+  excludeCrawlers:
+    [] # Remove the "[]" when adding values to this list
+    #- "ia_archiver" # Internet Archive / Wayback Machine / archive.org
+    #- "GPTBot" # OpenAI / ChatGPT indexing
+    #- "ChatGPT-User" # OpenAI / ChatGPT plugins, used for direct actions in the name of a ChatGPT user
