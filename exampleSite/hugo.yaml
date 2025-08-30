@@ -1,0 +1,42 @@
+
+### Hugo configuration
+
+# This file contains the most basic configuration values. Up until Hugo v0.110.0
+# it was known as config.yaml.
+#
+# Further reading / info:
+#
+# - Official Hugo documentation on how to configure your Hugo site,
+#   full list of Hugo-defined variables with their default value:
+#   https://gohugo.io/getting-started/configuration/#all-configuration-settings
+
+---
+
+title: "Example site: `hugo-component-robotstxt`"
+theme:
+  - "golang.foundata.com/hugo-component-robotstxt"
+  - "golang.foundata.com/hugo-theme-dev"
+
+# Enable generation of robots.txt file.
+enableRobotsTXT: true
+
+# # Config example to overwrite the component's defaults, uncomment and adapt to play around
+# params:
+#   robotsTxt:
+#     excludeNonProduction: false
+#     exclude:
+#       # Version control
+#       - "/.git/"
+#       # Log and temp files
+#       - "/*.log$"
+#       - "/*.tmp$"
+#       - "/*.bak$"
+#       # System and metadata dirs
+#       - "/.well-known/"
+#     excludeCrawlers:
+#       - "ia_archiver" # Internet Archive / Wayback Machine / archive.org
+#       - "GPTBot" # OpenAI / ChatGPT indexing
+
+# Other filename to test the functionality
+sitemap:
+  filename: sitemap-adapted.xml

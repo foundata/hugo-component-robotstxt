@@ -1,6 +1,6 @@
 version = 1
-SPDX-PackageName = "hugo-component-robots-txt (Hugo theme component to manage robots.txt)"
-SPDX-PackageDownloadLocation = "https://github.com/foundata/hugo-component-robots-txt"
+SPDX-PackageName = "hugo-component-robotstxt (Hugo theme component to manage robots.txt)"
+SPDX-PackageDownloadLocation = "https://github.com/foundata/hugo-component-robotstxt"
 SPDX-PackageSupplier = "foundata GmbH (https://foundata.com)"
 SPDX-PackageComment = """
 This project may include calls to Application Programming Interfaces

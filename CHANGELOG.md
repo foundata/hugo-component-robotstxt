@@ -11,4 +11,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - All functionality and files.
 
 
-[unreleased]: https://github.com/foundata/hugo-component-robots-txt/compare/v0.0.0-dev...HEAD
+[unreleased]: https://github.com/foundata/hugo-component-robotstxt/compare/v0.0.0-dev...HEAD

@@ -1,6 +1,23 @@
-# Hugo theme component: `hugo-component-robots-txt`
+# Hugo theme component: hugo-component-robotstxt (manage robots.txt)
 
-A reusable [theme component](https://gohugo.io/hugo-modules/theme-components/) to manage and generate the site's [robots.txt](https://developers.google.com/search/docs/crawling-indexing/robots/intro).
+A reusable [theme component](https://gohugo.io/hugo-modules/theme-components/) to manage and generate the site's [`robots.txt`](https://developers.google.com/search/docs/crawling-indexing/robots/intro).
+
+
+## Table of contents
+
+- [Features](#features)
+- [Demo](#demo)
+- [Installation](#installation)
+  - [Using Hugo modules](#installation-hugo-modules)
+  - [Using Git submodules](#installation-git-submodules)
+- [Configuration](#configuration)
+  - [Settings](#settings)
+    - [`excludeNonProduction`](#setting-excludeNonProduction)
+    - [`exclude`](#setting-exclude)
+    - [`excludeCrawlers`](#setting-excludeCrawlers)
+    - [Sitemap handling](#setting-sitemapHandling)
+- [Licensing, copyright](#licensing-copyright)
+- [Author information](#author-information)
 
 
 ## Features
@@ -13,27 +30,79 @@ A reusable [theme component](https://gohugo.io/hugo-modules/theme-components/) t
   * If a sitemap is disabled or renamed, the reference is updated or omitted accordingly.
 
 
-## Installation
+## Demo
 
-This component uses [Hugo Modules](https://gohugo.io/hugo-modules/use-modules/). Simply import `golang.foundata.com/hugo-component-robots-txt`.
+Clone the repository and run the included example content (requires Hugo, Go, and Git):
+
+```bash
+git clone https://github.com/foundata/hugo-component-robotstxt.git
+cd hugo-component-robotstxt/exampleSite
+HUGO_MODULE_WORKSPACE=hugo.work hugo server --ignoreVendorPaths "**"
+```
+
+Or look at the following pages using this theme component:
+
+* https://foundata.com/robots.txt
+* https://golang.foundata.com/robots.txt
 
 
-## Configuration
+## Installation<a id="installation"></a>
+
+### Using Hugo modules<a id="installation-hugo-modules"></a>
+
+Add the following module path(s) to your [`theme:` configuration](https://gohugo.io/hugo-modules/theme-components/):
+
+```yaml
+theme:
+  - "golang.foundata.com/hugo-component-robotstxt"
+```
+
+Hugo automatically fetches and import theme module paths as Go/Hugo modules, so you do **not** need to list them under `module.imports` manually. Using modules requires [Hugo, Go, and Git](https://gohugo.io/hugo-modules/use-modules/#prerequisite) to be installed on your system.
+
+
+### Using Git submodules<a id="installation-git-submodules"></a>
+
+From the root directory of your Hugo site, initialize a new Git repository (if you haven't already), then add the theme as a [Git submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules):
+
+```bash
+git submodule add https://github.com/foundata/hugo-component-robotstxt.git themes/robotstxt
+```
+
+Now reference the theme directory name in your [`theme:` configuration](https://gohugo.io/hugo-modules/theme-components/):
+
+```yaml
+theme:
+  - "robotstxt"
+```
+
+## Configuration<a id="configuration"></a>
+
+Example:
 
 ```yaml
 params:
   robotsTxt:
+    # Block all user agents ("Disallow: /") in non-production environments.
     excludeNonProduction: true
     exclude:
-      - "/.git/*"
-      - "/.well-known/*"
-      - "*.asc$"
+      # Version control
+      - "/.git/"
+      # System and metadata dirs
+      - "/.well-known/"
+      # Log and temp files
+      - "/*.log$"
+      - "/*.tmp$"
+      - "/*.bak$"
     excludeCrawlers:
-      - "ia_archiver"
+      - "GPTBot" # OpenAI / ChatGPT indexing
+      - "ChatGPT-User" # OpenAI / ChatGPT plugins, used for direct actions in the name of a ChatGPT user
+
 ```
 
 
-### `excludeNonProduction`
+### Settings<a id="settings"></a>
+
+#### `excludeNonProduction`<a id="setting-excludeNonProduction"></a>
 
 * **Default:** `true`
 * When `true`, the template adds the following directive in non-production builds:
@@ -46,7 +115,7 @@ params:
   * `.Site.Params.env == "production"`
 
 
-### `exclude`
+#### `exclude`<a id="setting-exclude"></a>
 
 * **Type:** list of [path patterns](https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt#url-matching-based-on-path-values).
 * Each entry becomes a `Disallow:` rule for all .crawlers (`User-agent: *`).
@@ -63,10 +132,8 @@ params:
   Disallow: *.asc$
   ```
 
-💡 For pages that should be excluded from both `robots.txt` **and** the sitemap, add `sitemapExclude: true` in the page's front matter.
 
-
-### `excludeCrawlers`
+#### `excludeCrawlers`<a id="setting-excludeCrawlers"></a>
 
 * **Type:** list of crawler user-agent names.
 * Each entry creates a crawler-specific block:
@@ -84,7 +151,7 @@ params:
   Disallow: /
   ```
 
-### Sitemap handling
+#### Sitemap handling<a id="setting-sitemapHandling"></a>
 
 * By default Hugo generates `/sitemap.xml`.
 * If disabled (`disableKinds = ["sitemap"]`) or if `sitemap.filename` is set to an empty string, no `Sitemap:` line is emitted.
@@ -101,7 +168,7 @@ This project is licensed under the GNU General Public License v3.0 or later (SPD
 The [`REUSE.toml`](REUSE.toml) file provides detailed licensing and copyright information in a human- and machine-readable format. This includes parts that may be subject to different licensing or usage terms, such as third-party components. The repository conforms to the [REUSE specification](https://reuse.software/spec/). You can use [`reuse spdx`](https://reuse.readthedocs.io/en/latest/readme.html#cli) to create a [SPDX software bill of materials (SBOM)](https://en.wikipedia.org/wiki/Software_Package_Data_Exchange).
 <!--REUSE-IgnoreEnd-->
 
-[![REUSE status](https://api.reuse.software/badge/github.com/foundata/hugo-component-robots-txt)](https://api.reuse.software/info/github.com/foundata/hugo-component-robots-txt)
+[![REUSE status](https://api.reuse.software/badge/github.com/foundata/hugo-component-robotstxt)](https://api.reuse.software/info/github.com/foundata/hugo-component-robotstxt)
 
 
 ## Author information<a id="author-information"></a>

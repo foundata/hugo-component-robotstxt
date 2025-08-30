@@ -21,6 +21,9 @@ robotsTxt:
   #   https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt#url-matching-based-on-path-values
   #
   # Notes:
+  # - Reminder: robots.txt is an *advisory* mechanism. It prevents compliant
+  #   crawlers from fetching URLs, but does not protect sensitive files from
+  #   direct access.
   # - Reminder: "Disallow: /foo" blocks everything starting with "foo", e.g.
   #   "foobar.html" or "foofolder/".
   # - For individual pages, consider also setting `sitemapExclude: true` in a
@@ -39,6 +42,11 @@ robotsTxt:
   #
   # Resources / further reading:
   # - https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers
+  #
+  # Notes:
+  # - Reminder: robots.txt is an *advisory* mechanism. It prevents compliant
+  #   crawlers from fetching URLs, but does not protect sensitive files from
+  #   direct access.
   excludeCrawlers:
     [] # Remove the "[]" when adding values to this list
     #- "ia_archiver" # Internet Archive / Wayback Machine / archive.org
