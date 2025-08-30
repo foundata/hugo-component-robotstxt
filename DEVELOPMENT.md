@@ -41,7 +41,11 @@ This file provides information for maintainers and contributors to `hugo-compone
 
 Nothing special or automated yet. Therefore just some hints for manual testing:
 
-- Run the `exampleSite` theme and watch for any Hugo warnings or errors.
+- Run the `exampleSite` and watch for any Hugo warnings or errors:
+  ```bash
+  cd ./hugo-component-robotstxt/exampleSite
+  HUGO_MODULE_WORKSPACE=hugo.work hugo server --ignoreVendorPaths "**"
+  ```
 
 
 ## Releases<a id="releases"></a>

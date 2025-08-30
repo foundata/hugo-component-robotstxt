@@ -38,7 +38,7 @@ Clone the repository and run the included example content (requires Hugo, Go, an
 
 ```bash
 git clone https://github.com/foundata/hugo-component-robotstxt.git
-cd hugo-component-robotstxt/exampleSite
+cd ./hugo-component-robotstxt/exampleSite
 HUGO_MODULE_WORKSPACE=hugo.work hugo server --ignoreVendorPaths "**"
 ```
 
@@ -162,13 +162,12 @@ params:
 
 ## Compatibility<a id="compatibility"></a>
 
-The component should be compatible with nearly every Hugo version and should always work with the latest Hugo release (we usually run the latest Hugo ourselves and fix issues promptly). It has been tested with:
+This project is compatible with Hugo (extended) ≥ v0.148.0 and should always work with the latest Hugo release (we usually run the latest Hugo ourselves and fix issues promptly). It has been tested at least with:
 
-- Hugo Extended v0.148.0
-- Hugo Extended v0.148.2
+- [Hugo extended v0.149.0](https://github.com/gohugoio/hugo/releases/tag/v0.149.0)
+- [Hugo extended v0.148.0](https://github.com/gohugoio/hugo/releases/tag/v0.148.0)
 
-If your version isn't listed (especially if it's older) feel free to try it. You may need to adjust [`config/_default/module.yaml`](./config/_default/module.yaml).
-
+If your version isn't listed, it might still work. Just give it a try.
 
 
 ## Contributing<a id="contributing"></a>
