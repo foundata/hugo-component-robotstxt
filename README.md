@@ -22,7 +22,7 @@ A reusable [theme component](https://gohugo.io/hugo-modules/theme-components/) t
 - [Author information](#author-information)
 
 
-## Features
+## Features<a id="features"></a>
 
 * Automatically excludes all bots and crawlers in non-production environments by default.
 * Sane and useful `Disallow:` defaults.
@@ -32,7 +32,7 @@ A reusable [theme component](https://gohugo.io/hugo-modules/theme-components/) t
   * If a sitemap is disabled or renamed, the reference is updated or omitted accordingly.
 
 
-## Demo
+## Demo<a id="demo"></a>
 
 Clone the repository and run the included example content (requires Hugo, Go, and Git):
 
@@ -160,7 +160,7 @@ params:
 * If a custom filename is set (e.g. `sitemap.filename = "mysite-map.xml"`), the generated `robots.txt` will correctly reference it.
 
 
-## Compatibility
+## Compatibility<a id="compatibility"></a>
 
 The component should be compatible with nearly every Hugo version and should always work with the latest Hugo release (we usually run the latest Hugo ourselves and fix issues promptly). It has been tested with:
 
@@ -171,7 +171,7 @@ If your version isn't listed (especially if it's older) feel free to try it. You
 
 
 
-## Contributing
+## Contributing<a id="contributing"></a>
 
 See [`CONTRIBUTING.md`](./CONTRIBUTING.md) if you want to get involved.
 
