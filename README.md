@@ -16,6 +16,8 @@ A reusable [theme component](https://gohugo.io/hugo-modules/theme-components/) t
     - [`exclude`](#setting-exclude)
     - [`excludeCrawlers`](#setting-excludeCrawlers)
     - [Sitemap handling](#setting-sitemapHandling)
+- [Compatibility](#compatibility)
+- [Contributing](#contributing)
 - [Licensing, copyright](#licensing-copyright)
 - [Author information](#author-information)
 
@@ -156,6 +158,24 @@ params:
 * By default Hugo generates `/sitemap.xml`.
 * If disabled (`disableKinds = ["sitemap"]`) or if `sitemap.filename` is set to an empty string, no `Sitemap:` line is emitted.
 * If a custom filename is set (e.g. `sitemap.filename = "mysite-map.xml"`), the generated `robots.txt` will correctly reference it.
+
+
+## Compatibility
+
+The component should be compatible with nearly every Hugo version and should always work with the latest Hugo release (we usually run the latest Hugo ourselves and fix issues promptly). It has been tested with:
+
+- Hugo Extended v0.148.0
+- Hugo Extended v0.148.2
+
+If your version isn't listed (especially if it's older) feel free to try it. You may need to adjust [`config/_default/module.yaml`](./config/_default/module.yaml).
+
+
+
+## Contributing
+
+See [`CONTRIBUTING.md`](./CONTRIBUTING.md) if you want to get involved.
+
+This projects's functionality is mature, so there might be little activity on the repository in the future. Don't get fooled by this, the project is under active maintenance and used daily by the maintainers.
 
 
 ## Licensing, copyright<a id="licensing-copyright"></a>
