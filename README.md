@@ -34,7 +34,7 @@ A reusable [theme component](https://gohugo.io/hugo-modules/theme-components/) t
 
 ## Demo<a id="demo"></a>
 
-Clone the repository and run the included example content (requires Hugo, Go, and Git):
+Clone the repository and run the included [example content](./exampleSite/content/) (requires Hugo, Go, and Git):
 
 ```bash
 git clone https://github.com/foundata/hugo-component-robotstxt.git
