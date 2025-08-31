@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Nothing worth mentioning yet.
 
 
+## [1.1.0] - 2025-08-31
+
+### Changed
+
+- Set [`enableRobotsTXT`](https://gohugo.io/configuration/all/#enablerobotstxt) to `true` by default.
+- Improved documentation.
+
+
 ## [1.0.0] - 2025-08-30
 
 ### Added
@@ -18,5 +26,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - All functionality and files.
 
 
-[unreleased]: https://github.com/foundata/hugo-component-robotstxt/compare/v1.0.0...HEAD
+[unreleased]: https://github.com/foundata/hugo-component-robotstxt/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/foundata/hugo-component-robotstxt/releases/tag/v1.1.0
 [1.0.0]: https://github.com/foundata/hugo-component-robotstxt/releases/tag/v1.0.0
