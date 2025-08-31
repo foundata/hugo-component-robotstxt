@@ -1,0 +1,9 @@
+# Hugo configuration
+#
+# This file contains the most basic configuration values. Up until Hugo v0.110.0
+# it was known as config.yaml.
+
+---
+
+# Enable generation of robots.txt file.
+enableRobotsTXT: true
