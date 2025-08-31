@@ -15,7 +15,7 @@ A reusable [theme component](https://gohugo.io/hugo-modules/theme-components/) t
     - [`excludeNonProduction`](#setting-excludeNonProduction)
     - [`exclude`](#setting-exclude)
     - [`excludeCrawlers`](#setting-excludeCrawlers)
-    - [Sitemap handling](#setting-sitemapHandling)
+  - [Sitemap handling](#sitemap-handling)
 - [Compatibility](#compatibility)
 - [Contributing](#contributing)
 - [Licensing, copyright](#licensing-copyright)
@@ -79,9 +79,15 @@ theme:
 
 ## Configuration<a id="configuration"></a>
 
+> ℹ️ **Heads-up:** You have to set [`enableRobotsTXT: true`](https://gohugo.io/configuration/all/#enablerobotstxt) (which is `false` by default) and make sure `robotstxt` is *not* listed at [`disableKinds`](https://gohugo.io/configuration/all/#disablekinds) (which should be OK by default). Otherwise, no `robots.txt` will be created.
+
+
 Example:
 
 ```yaml
+# Enable generation of robots.txt file.
+enableRobotsTXT: true
+
 params:
   robotsTxt:
     # Block all user agents ("Disallow: /") in non-production environments.
@@ -104,10 +110,14 @@ params:
 
 ### Settings<a id="settings"></a>
 
+This section documents the theme options you can place under `params.robotsTxt` in your Hugo configuration. The example configurations and are safe to copy-paste. All keys are optional and the theme falls back to sensible behavior unless otherwise noted.
+
+
 #### `excludeNonProduction`<a id="setting-excludeNonProduction"></a>
 
-* **Default:** `true`
-* When `true`, the template adds the following directive in non-production builds:
+- Type: Boolean.
+- Default: `true`
+- Purpose: When `true`, the template adds the following directive in non-production builds:
   ```
   User-agent: *
   Disallow: /
@@ -115,19 +125,30 @@ params:
   Production detection is based on either:
   * `hugo.IsProduction`
   * `.Site.Params.env == "production"`
+- **Example (config):**
+  ```yaml
+  params:
+    robotsTxt:
+      excludeNonProduction: true
+  ```
 
 
 #### `exclude`<a id="setting-exclude"></a>
 
-* **Type:** list of [path patterns](https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt#url-matching-based-on-path-values).
-* Each entry becomes a `Disallow:` rule for all .crawlers (`User-agent: *`).
-* Example:
+- Type: List of strings.
+- Default: `["/.git/", "/*.log$", "/*.tmp$", "/*.bak$", "/.well-known/"]`
+- Purpose:
+  - List of [path patterns](https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt#url-matching-based-on-path-values).
+  - Each entry becomes a `Disallow:` rule for all .crawlers (`User-agent: *`).
+- **Example (config):**
   ```yaml
-  exclude:
-    - "/download/"
-    - "*.asc$"
+  params:
+    robotsTxt:
+      exclude:
+        - "/download/"
+        - "*.asc$"
   ```
-  becomes:
+  becomes the following in `robots.txt`:
   ```
   User-agent: *
   Disallow: /download/
@@ -137,14 +158,22 @@ params:
 
 #### `excludeCrawlers`<a id="setting-excludeCrawlers"></a>
 
-* **Type:** list of crawler user-agent names.
-* Each entry creates a crawler-specific block:
+- Type: List of strings.
+- Default: `[]` (empty list)
+- Purpose:
+  - List of crawler user-agent names to exclude. Most companies provide some kind of list, e.g.:
+    - https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers
+    - https://platform.openai.com/docs/bots/overview-of-openai-crawlers%23.eps
+  - Reminder: `robots.txt` is an *advisory* mechanism. It prevents compliant crawlers from fetching URLs, but does not protect sensitive files from  direct access.
+- **Example (config):** Each entry creates a crawler-specific block:
   ```yaml
-  excludeCrawlers:
-    - "ia_archiver"
-    - "GPTBot"
+  params:
+    robotsTxt:
+      excludeCrawlers:
+        - "ia_archiver"
+        - "GPTBot"
   ```
-  becomes:
+  becomes the following in `robots.txt`:
   ```
   User-agent: ia_archiver
   Disallow: /
@@ -153,9 +182,12 @@ params:
   Disallow: /
   ```
 
-#### Sitemap handling<a id="setting-sitemapHandling"></a>
 
-* By default Hugo generates `/sitemap.xml`.
+### Sitemap handling<a id="sitemap-handling"></a>
+
+There is nothing to configure. But the component is aware of [Hugo's sitemap configuration](https://gohugo.io/configuration/sitemap/):
+
+* By default Hugo generates the Sitemap as `/sitemap.xml`.
 * If disabled (`disableKinds = ["sitemap"]`) or if `sitemap.filename` is set to an empty string, no `Sitemap:` line is emitted.
 * If a custom filename is set (e.g. `sitemap.filename = "mysite-map.xml"`), the generated `robots.txt` will correctly reference it.
 
