@@ -42,6 +42,7 @@ robotsTxt:
   #
   # Resources / further reading:
   # - https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers
+  # - https://platform.openai.com/docs/bots/overview-of-openai-crawlers%23.eps
   #
   # Notes:
   # - Reminder: robots.txt is an *advisory* mechanism. It prevents compliant
